@@ -8,54 +8,113 @@ app.get("/", (request, response) => {
 });
 app.listen(process.env.PORT); // Recebe solicitações que o deixa online
 
-const Discord = require("discord.js"); 
-require("discord-reply")
-
+const Discord = require("discord.js"); //Conexão com a livraria Discord.js
 const client = new Discord.Client(); //Criação de um novo Client
 
 const config = require("./config.json"); //Pegando o prefixo do bot para respostas de comandos
+
+ client.on('messageDelete', async (message, oldMessage, newMessage) => {
+       
+  if(message.author.bot) return;
+     const embed = new Discord.MessageEmbed()
+     .setTitle('Mensagem excluida')
+     .setDescription(`o usuario: ${message.author} apagou uma mensagem no canal ${message.channel}
+ Mensagem: \`\`\` ${message.content} \`\`\``)    
+      .setColor('BLACK')
+      .setTimestamp()
+      .setThumbnail(message.author.displayAvatarURL())
+
+     let channel = message.guild.channels.cache.get('847932249604620348')
+     if (!channel) return;
+     channel.send(embed)
+ })
+
+client.on('messageUpdate', async (message, oldMessage, newMessage) => {
+       
+  if(message.author.bot) return;
+     const embed = new Discord.MessageEmbed()
+     .setTitle('Mensagem editada')
+     .setDescription(`o usuario: ${message.author} apagou uma mensagem no canal ${message.channel}
+ Mensagem antiga: \`\`\` ${message.content || 'Anexo'} \`\`\`
+ Mensagem nova: \`\`\` ${oldMessage.content || 'Anexo'} \`\`\``)    
+      .setColor('RANDOM')
+     let channel = message.guild.channels.cache.get('847932249604620348')
+     if (!channel) return;
+     channel.send(embed)
+ })
  
+
+client.on("ready", () => {
+  var rei = client.channels.cache.get("819270572994855003");//caso não tenha cria um com o nome status 
+  
+  let reimsg = new Discord.MessageEmbed()
+  .setTitle(`🚀 Acabei de ser reiniciada!`)
+  .setDescription(`🌬 **Estou em:** ${client.guilds.cache.size} servidores!
+  
+  👣 **Cuidando de:** ${client.users.cache.size} usuários.`)
+  .setFooter(`Reiniciada em: `)
+  .setColor("RANDOM")
+  .setTimestamp();
+
+  rei.send(reimsg)
+})
+
 //////////////////////////MENSAGENS ESCONDIDAS//////////////////////////////
 
 client.on("message", (message) => {
   if (!message.author.bot)
   {
-    if (message.content == "Quem é o criador da bawer?") message.lineReply("<:emoji_11:856727021320798209>**Meu criador**<:emoji_11:856727021320798209> \n\nMeu criador é o <@!839595775729860659>/Hey Pontinho's \n\n<a:emoji_8:856723381231157288>**Onde tiro minhas duvidas?**<a:emoji_8:856723381231157288> \n\nVocê pode tirar suas duvidas em meu servidor! Ja estar nele? Otimo! Agora va no chat <#814220424510570556>")
+    if (message.content == "carrinho") message.channel.send("<a:carrinho:851089197637173258>")
+  }
+})
+
+
+client.on("message", (message) => {
+  if (!message.author.bot)
+  {
+    if (message.content == "wap") message.reply("I said, certified freak. \nSeven days a week. \nWet-ass pussy. \nMake that pull-out game weak, woo (ah). \nYeah, yeah, yeah, yeah. \nYeah, you fucking with some wet-ass pussy. \nBring a bucket and a mop for this wet-ass pussy. \nGive me everything you got for this wet-ass pussy")
   }
 })
 
 client.on("message", (message) => {
   if (!message.author.bot)
   {
-    if (message.content == "Nada aqui") message.lineReply("Nada aqui")
+    if (message.content == "Bawer vai se foder") message.reply("Foda-se meu anjo")
   }
 })
 
 client.on("message", (message) => {
   if (!message.author.bot)
   {
-    if (message.content == "Alguem me da braws?") message.lineReply("<:emoji_17:856727209564569670> | **Que feio!** Pare de mendigar Braws! Pegue seu B!daily \n<:emoji_15:856727163436007485> | **Ja pegou seu daily?** Então aposte e ganhe mais Braws! B!apostar")
+    if (message.content == "Bawer eu te amo") message.reply("Woww. Eu tbm te amo >.< So que como amigo <:Bawer:842704129230766100>")
   }
 })
 
 client.on("message", (message) => {
   if (!message.author.bot)
   {
-    if (message.content == "Ai, eu queria tanto uma batata") message.lineReply("Eu tbm ._.")
+    if (message.content == "que horas sao?") message.reply("Olhe no relogio uai")
+  }
+})
+
+client.on("message", (message) => {
+  if (!message.author.bot) 
+  {
+    if (message.content == "batata") message.reply("Eu também gosto de batata! :potato: :yum:")
   }
 })
 
 client.on("message", (message) => {
   if (!message.author.bot)
   {
-    if (message.content == "Antares") message.lineReply("O que você quer com meu amigo?")
+    if (message.content == "potato") message.reply("I also like potato :potato: :yum:")
   }
 })
 
 client.on("message", (message) => {
   if (!message.author.bot)
   {
-    if (message.content == "<@!839595775729860659>") message.lineReply("<:emoji_12:856727057391288390>")
+    if (message.content == "Anta") message.reply("res")
   }
 })
 //////////////////////////MENSAGENS ESCONDIDAS//////////////////////////////
@@ -63,12 +122,12 @@ client.on("message", (message) => {
 //////////////////////////SHARDS//////////////////////////////
 client.on("shardReady", async shard => {
   const channel = client.channels.cache.get("819270572994855003")
-  channel.send(`<:emoji_16:856727189368864768> A shard **#${shard}** foi ligada com sucesso!`)
+  channel.send(`A shard **#${shard}** foi ligada com sucesso!`)
  })
 
 client.on("shardReconnecting", async shard => {
   const channel = client.channels.cache.get("819270572994855003")
-  channel.send(`<:emoji_16:856727189368864768> A shard **#${shard}** estar sendo reconectada!`)
+  channel.send(`A shard **#${shard}** estar sendo reconectada!`)
  })
 
  client.on("shardDisconnecting", async shard => {
@@ -78,34 +137,37 @@ client.on("shardReconnecting", async shard => {
 
  client.on("shardResume", async shard => {
   const channel = client.channels.cache.get("819270572994855003")
-  channel.send(`<:emoji_16:856727189368864768> A shard **#${shard}** foi reconectada com sucesso!`)
+  channel.send(`A shard **#${shard}** foi reconectada com sucesso!`)
  })
 //////////////////////////SHARDS//////////////////////////////
 
 //////////////////////////AUTO ROLE//////////////////////////////
+client.on("guildMemberAdd",  async (member) => {
+  let ferinha_autorole = db.get(`ferinha_autorole_${member.guild.id}`);
+  if (!ferinha_autorole === null) return;
+  member.roles.add(ferinha_autorole)
+})
 
 //////////////////////////STATUS//////////////////////////////
-client.on('ready', () => {
-	let activities = [
-			`Utilize ${config.prefix}help para obter ajuda`,
+client.on("ready", () => {
+  let activities = [
+      `Utilize ${config.prefix}help para obter ajuda`,
       `${client.guilds.cache.size} servidores!`,
       `${client.channels.cache.size} canais`,
       `${client.users.cache.size} usuários`,
-      `${config.prefix}daily ja recebeu seu diario hoje?`,
+      `.daily ja recebeu seu diario hoje?`,
       `❤️ obrigada aos ${client.users.cache.size} usuários que me usam`,
-      `❤️${client.guilds.cache.size} servidores espalhando alegria :)`,
-      `Meu prefixo atual é: ${config.prefix}`
-		],
-		i = 0;
-	setInterval(
-		() =>
-			client.user.setActivity(`${activities[i++ % activities.length]}`, {
-				type: 'WATCHING'
-			}),
-		9000
-	);
-	client.user.setStatus('online').catch(console.error);
-	console.log('Estou Online!');
+      `❤️${client.guilds.cache.size} servidores espalhando bastante alegria :)` 
+    ],
+    i = 0;
+  setInterval( () => client.user.setActivity(`${activities[i++ % activities.length]}`, {
+        type: "STREAMING",
+        url: "https://twitch.tv/pontinhoaleatorio"
+      }), 1000 * 60); 
+  client.user
+      .setStatus("dnd")
+     .catch(console.error);
+console.log(`${client.user.username} Está pronto!`)
 });
 //////////////////////////STATUS//////////////////////////////
 
@@ -118,7 +180,7 @@ client.on("message", async message => {
             
                 if (message.content === mention) { //agora o bot responde a menção se ele estiver com algum apelido
             
-                    message.lineReply(`<a:emoji_7:856723333450170389> Hey ${message.author}, meu prefixo é **${config.prefix}** ultilize **${config.prefix}help** para receber ajuda!`)
+                    message.channel.send(`Hey ${message.author}, meu prefixo é **.**, utilize **.help** para receber ajuda!`)
             }
       })
  })
@@ -143,7 +205,7 @@ client.on('message', message => {
         commandFile.run(client, message, args);
     } catch (err) {
       message.channel.send({embed: {
-        description: `<:emoji_15:856727163436007485> Não consegui encontrar o comando \`${command}\` em meus comandos <a:emoji_8:856723381231157288> Digite ${config.prefix}help para ver meus comandos`,
+        description: `<:Bawer:842704129230766100> **Não consegui encontrar o comando \`${command}\` em meus comandos** <:Bawer_sad:842707834630176789> **Digite .help para ver meus comandos**`,
         color: "#ff0000"
       }}).then(m => m.delete({timeout: 9000}));
     console.error('Erro:' + err);
