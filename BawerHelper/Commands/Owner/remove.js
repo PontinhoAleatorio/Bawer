@@ -25,7 +25,7 @@ module.exports.run = async (scott, message, args) => {
         .setTimestamp()
         .setDescription(`<:Bawer:842704129230766100>
          Acabei de sai do servidor com o id: \`ID\` **[${args[0]}]**`)
-    message.lineReply(embed);
+    message.channel.send(embed);
 }
 
 module.exports.help = {
