@@ -1,5 +1,4 @@
 # Bawer
-![Bawer Bot](https://user-images.githubusercontent.com/84294591/131000738-ab596671-e89b-469f-b2dc-9c740b13f550.png)
 
 # Uma simples bot para o discord!
 
