@@ -16,8 +16,6 @@ Sim, tem tempo de espera, caso um dos users jogando não escolha o jogo acaba!
 
 Não tem amigos para jogar junto? Não se preocupe, jogue com você mesmo!
 
-https://discord.com/api/guilds/805137011060769019/widget.json
-
 
 # Bejos Bejos
 ![by @ranpokes on twitter](https://user-images.githubusercontent.com/84294591/131005149-368994b8-4b28-4bbe-89ab-8d2ba9f636e2.png)
