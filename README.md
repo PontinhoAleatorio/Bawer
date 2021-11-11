@@ -6,7 +6,7 @@ A Bawer é apenas mais um bot para o discord! Simples, nada de automod/xp/config
 
 # Pedra, Papel e Tesoura na Bawer Canary
 ![nãokk](https://user-images.githubusercontent.com/84294591/131000870-c0347f56-af84-4544-8ebe-503961eef27b.png)
-Não tem como o usuario roubar para saber qual foi sua escolha! Maaaaais caso o usaurio seja um staff do servidor ele vai poder ver sua escolha e fazer com que ele ganhe!
+Não tem como o usuario roubar para saber qual foi sua escolha! Maaaaais caso o usuario seja um staff do servidor ele vai poder ver sua escolha e fazer com que ele ganhe!
 
 Você não pode jogar com bots, apenas usuarios!
 
