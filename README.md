@@ -16,6 +16,7 @@ Sim, tem tempo de espera, caso um dos users jogando não escolha o jogo acaba!
 
 Não tem amigos para jogar junto? Não se preocupe, jogue com você mesmo!
 
+<iframe src="https://discord.com/widget?id=805137011060769019&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
 
 
 # Bejos Bejos
