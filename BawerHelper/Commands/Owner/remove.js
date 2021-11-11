@@ -6,7 +6,6 @@ module.exports.run = async (scott, message, args) => {
 
     console.log(`Comando de removerbot ${message.guild.name} ${message.guild.id} ${message.author.tag}`)
 
-    let user = message.mentions.users.first() || message.author;
     if (message.author.id !== ownerID) return message.channel.send(new Discord.MessageEmbed()
         .setColor("0x36393e")
         .setTimestamp()
