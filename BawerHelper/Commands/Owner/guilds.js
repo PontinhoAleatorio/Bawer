@@ -1,19 +1,20 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
+const c = require("../../infs.js")
+const id = '794400726315040778';
+module.exports = {
+    name: "serverlist",
+    aliases: ["lsx-sv"],
 
-     exports.run = async (client, message, args) => {
-        let clientGuilds = message.client.guilds.cache;
-        let messageObj = Discord.Util.splitMessage(
-            clientGuilds.map(g => '\`' + g.id + `\` **|** \`` + g.name + `\` **|** \`` + g.members.cache.size + '\` ') || 'None'
-        );
-        if (messageObj.length == 1) {
-            message.channel.send(messageObj[0]);
-        } else {
-            for (i = 0; messageObj.length < i; i++) {
-                message.channel.send(messageObj[i]);
-            }
-        }
-    }
-module.exports.help = {
-	aliases: ["servidores", "svr"],
-	name: "guilds"
+  run: async (client, message, args) =>  {
+
+if (message.author.id !== ownerID) return;
+
+const guild = client.guilds.cache.sort((a, b) => b.memberCount - a.memberCount).first(30);
+const  = new Discord.MessageEmbed()
+.setDescription(guild.map((guild, index) => `#**${index + 1}**  \`${guild.name}\` | ${guild.memberCount} Membros | \`${guild.id}\``).join('\n'))
+.setColor(c.color)
+.setThumbnail(c.thumb)
+
+message.reply({embeds: [footer]});
+}
 }
