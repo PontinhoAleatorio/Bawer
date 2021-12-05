@@ -85,7 +85,7 @@ let painel = new MessageActionRow().addComponents( new MessageSelectMenu()
 
         );
         //canais
-      const canal = client.channels.cache.find(c => c.id === '913145806943563787') // channel that the review will be sent to
+      const canal = client.channels.cache.find(c => c.id === '913145806943563787')
       const canal2 = client.channels.cache.find(c => c.id === '902321128972881942')
       canal.send({ embeds: [batata], components: [painel]}).then(msg => {
 
